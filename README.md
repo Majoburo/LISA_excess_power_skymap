@@ -6,3 +6,14 @@ Dependencies:
   - fastlisaresponse
   - ??
 
+TODO:
+  - likelihood 
+    inputs: parameters(healpix index, amplitude) 
+    outputs: likelihood
+    - noise model
+    - response (fastlisaresponse)
+  - sampling
+  - data generation
+    - amplitude at each healpix pixel in each frequency
+    - instrument noise
+  - output plots
