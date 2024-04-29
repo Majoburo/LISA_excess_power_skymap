@@ -1,0 +1,52 @@
+name: lisa-eps
+channels:
+  - defaults
+dependencies:
+  - bzip2=1.0.8=h6c40b1e_5
+  - ca-certificates=2024.3.11=hecd8cb5_0
+  - expat=2.6.2=hcec6c5f_0
+  - libcxx=14.0.6=h9765a3e_0
+  - libffi=3.4.4=hecd8cb5_0
+  - ncurses=6.4=hcec6c5f_0
+  - openssl=3.0.13=hca72f7f_0
+  - pip=23.3.1=py312hecd8cb5_0
+  - python=3.12.3=hd58486a_0
+  - readline=8.2=hca72f7f_0
+  - setuptools=68.2.2=py312hecd8cb5_0
+  - sqlite=3.41.2=h6c40b1e_0
+  - tk=8.6.12=h5d9f67b_0
+  - wheel=0.41.2=py312hecd8cb5_0
+  - xz=5.4.6=h6c40b1e_0
+  - zlib=1.2.13=h4dc903c_0
+  - pip:
+      - annotated-types==0.6.0
+      - astropy==6.0.1
+      - astropy-iers-data==0.2024.4.29.0.28.48
+      - chainconsumer==1.1.1
+      - contourpy==1.2.1
+      - cycler==0.12.1
+      - eryn==1.1.7
+      - fastlisaresponse==1.0.5
+      - fonttools==4.51.0
+      - healpy==1.16.6
+      - kiwisolver==1.4.5
+      - lisaanalysistools==1.0.5
+      - matplotlib==3.8.4
+      - numpy==1.26.4
+      - packaging==24.0
+      - pandas==2.2.2
+      - patsy==0.5.6
+      - pillow==10.3.0
+      - pydantic==2.7.1
+      - pydantic-core==2.18.2
+      - pyerfa==2.0.1.4
+      - pyparsing==3.1.2
+      - python-dateutil==2.9.0.post0
+      - pytz==2024.1
+      - pyyaml==6.0.1
+      - scipy==1.13.0
+      - six==1.16.0
+      - statsmodels==0.14.2
+      - typing-extensions==4.11.0
+      - tzdata==2024.1
+prefix: /Users/rjrosati/opt/anaconda3/envs/lisa-eps
