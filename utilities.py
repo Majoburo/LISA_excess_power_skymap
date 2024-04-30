@@ -1,6 +1,6 @@
 from fastlisaresponse import ResponseWrapper
 from lisatools.detector import EqualArmlengthOrbits, ESAOrbits, LISAModel
-from lisatools.sensitivity import get_sensitivity, A1TDISens, E1TDISens, T1TDISens
+from lisatools.sensitivity import get_sensitivity, AET1SensitivityMatrix
 import lisatools.detector as lisa_models
 from matplotlib import pyplot as plt
 import numpy as np
@@ -14,13 +14,16 @@ def generate_noise_realization(dt,Tobs,noisemodel : LISAModel = lisa_models.sang
     Nchannels = 3
     freqs = np.fft.rfftfreq(Nt,dt)
     N = len(freqs)
-    SnA = get_sensitivity(freqs, sens_fn=A1TDISens,  return_type='PSD')
-    SnE = get_sensitivity(freqs, sens_fn=E1TDISens, return_type='PSD')
-    SnT = get_sensitivity(freqs, sens_fn=T1TDISens, return_type='PSD')
+    sens_mat = AET1SensitivityMatrix(
+        freqs,
+        model=noisemodel,
+    )
+    SnA,SnE,SnT = sens_mat.sens_mat
     retdict = {"expected_PSD": np.zeros((Nchannels,N)), "fft": np.zeros((Nchannels,N),dtype=np.complex128),  "freqs":freqs, 'timeseries' : np.zeros((Nchannels,Nt))}
     retdict['expected_PSD'][0,:] = SnA
     retdict['expected_PSD'][1,:] = SnE
     retdict['expected_PSD'][2,:] = SnT
+    np.random.seed(seed)
     retdict['fft'][:,:] = randc(np.sqrt(retdict['expected_PSD']))
     # method based on https://dsp.stackexchange.com/questions/83744/how-to-generate-time-series-from-a-given-one-sided-psd
     retdict['fft'][:,0] = 0.0
