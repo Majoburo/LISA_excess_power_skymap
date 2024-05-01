@@ -45,17 +45,17 @@ gb = GBWave(use_gpu=False)
 
 use_gpu = False
 
-T = 2.0  # years
-t0 = 10000.0  # time at which signal starts (chops off data at start of waveform where information is not correct)
+T = 0.1  # years
+t0 = 100000.0  # time at which signal starts (chops off data at start of waveform where information is not correct)
 
 sampling_frequency = 0.1
-dt = 1
+dt = 15.0
 
 # order of the langrangian interpolation
 order = 25
 
 # 1st or 2nd or custom (see docs for custom)
-tdi_gen = "2nd generation"
+tdi_gen = "1st generation"
 
 index_lambda = 6
 index_beta = 7
@@ -93,8 +93,9 @@ lam = 5.22979888
 
 chans = gb_lisa_esa(A, f, fdot, iota, phi0, psi, lam, beta)
 
-#fig, ax = plt.subplots(3, 1, sharex=True)
+fig, ax = plt.subplots(3, 1, sharex=True)
 
-#for i, lab in enumerate(["A", "E", "T"]):
-#    ax[i].plot(np.arange(len(chans[0])) * dt / YRSID_SI, chans[i])
-#    ax[i].set_ylabel(lab)
+for i, lab in enumerate(["A", "E", "T"]):
+    ax[i].plot(np.arange(len(chans[0])) * dt / YRSID_SI, chans[i])
+    ax[i].set_ylabel(lab)
+plt.show()
